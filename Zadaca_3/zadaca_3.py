@@ -1,5 +1,5 @@
 import random
-
+import sys
 
 print('Zadatak 1:')
 
@@ -72,13 +72,17 @@ for i in range(3):
         if (not type(cijenaPopravkaRemena) is int) or (not type(cijenaPopravkaBranika) is int) or (not type(popust) is int):
             raise ValueError('Cijene moraju biti pozitivni cijeli brojevi.')
         elif (cijenaPopravkaRemena < 0) or (cijenaPopravkaBranika < 0) or (popust < 0):
-            raise ValueError('Cijene moraju biti pozitivni cijeli brojevi.')
+            raise Exception('Cijene moraju biti pozitivni cijeli brojevi.')
         else:
             cijene.append([int(cijenaPopravkaRemena), int(cijenaPopravkaBranika), int(popust)])
 
-    except ValueError as ve:
-        print(ve)
-        quit('Quitting...')
+    except ValueError as er:
+        print(er)
+        sys.exit('Exiting because of an error...')
+    except Exception as ex:
+        print(ex)
+        sys.exit('Exiting because of an excetion...')
+
 
 renatoCijena = (cijene[0][0] + cijene[0][1]) - ((cijene[0][2] / 100) * (cijene[0][0] + cijene[0][1]))
 marinaCijena = (cijene[1][0] + cijene[1][1]) - ((cijene[1][2] / 100) * (cijene[1][0] + cijene[1][1]))
