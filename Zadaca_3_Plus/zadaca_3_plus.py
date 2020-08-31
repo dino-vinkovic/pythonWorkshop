@@ -5,14 +5,14 @@ print('*** Legend of Ino ***')
 def printCharacterDetails(name, healthPoints, magicPoints):
     print('Name:', name, 'HP:', healthPoints, 'MP:', magicPoints, '\n')
 
-#Calculate hit points for character according to his details
+# Calculate hit points for character according to his details
 def calculatePoints(character):
     randomHP = random.randrange(0, int((character.healthPoints / 2)) + 1)
     randomMP = random.randrange(0, int((character.magicPoints / 2)) + 1)
     hitPoints = (randomHP + randomMP) * 2
     return hitPoints
 
-#Ask player if he wants a health potion
+# Ask player if he wants a health potion
 def doctorCheckUp(player):
     wantMoreHP = input('Do you want a health potion? (y \ n) ')
 
@@ -23,7 +23,7 @@ def doctorCheckUp(player):
     else:
         pass
 
-#Send details for two characters and calculate who wins
+# Send details for two characters and calculate who wins
 def fight(player, enemy):
     count = 1
     countDoctorCheckUp = 0
@@ -91,7 +91,7 @@ selectCharacterType = input("""\nType in the number next to the type you want to
     3 - Wizard
     """)
 
-#Check weather the user typed in one of the proposed values
+# Check whether the user typed in one of the proposed values
 while selectCharacterType.isalpha() or selectCharacterType.isspace() or \
         (int(selectCharacterType) <= 0) or (int(selectCharacterType) > 3):
     print("Please select 1, 2 or 3.")
@@ -118,7 +118,7 @@ selectWeapon = input("""Type in the number next to the weapon you want to choose
 
 weapons = ['Mancetov Crveni Spojler', 'Anin Nokat Istine', 'Vanjina Puska Pravde']
 
-#Check weather the user typed in one of the proposed values
+# Check whether the user typed in one of the proposed values
 while selectWeapon.isalpha() or selectWeapon.isspace() or \
         (int(selectWeapon) <= 0) or (int(selectWeapon) > 3):
     print("Please select 1, 2 or 3.")
@@ -162,7 +162,7 @@ for enemy in enemies:
     else:
         continue
 
-#Player wins the game and saves Inoslav if he defeats all enemies
+# Player wins the game and saves Inoslav if he defeats all enemies
 if countWin == 3:
     print(playersCharacter.name + ' survived and saved Inoslav.')
 else:
