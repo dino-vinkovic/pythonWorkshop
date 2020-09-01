@@ -13,6 +13,7 @@ class Projekt:
         self.tester = tester
 
 
+# Function to repeatedly prompt user for tester name and check the input is a letter
 def inputTesterDetails():
     testerName = input("Type in the tester's name: ")
     testerSurname = input("Type in the tester's surname: ")
@@ -25,6 +26,7 @@ def inputTesterDetails():
     return [testerName, testerSurname]
 
 
+# Function to repeatedly prompt user for project name and check the input is a letter
 def inputProjectDetails():
     projectName = input("Type in the project's name: ")
 
@@ -34,9 +36,10 @@ def inputProjectDetails():
     return projectName
 
 
+# Function that writes project and tester details into a file
 def writeIntoFile(fileName, projectName, tester):
 
-# Append if file already exists, create a new one otherwise
+    # Append if file already exists, create a new one otherwise
     if os.path.exists(fileName):
         appendWrite = 'a'
     else:
@@ -50,6 +53,7 @@ def writeIntoFile(fileName, projectName, tester):
     projectsFile.close()
 
 
+# Function that writes from a file
 def writeFromFile(fileName):
 
     projectFile = ''
@@ -86,10 +90,10 @@ projectTwo = Projekt(projectTwoInput, testerTwo)
 
 
 # Write into file
-fileName = 'projekti.txt'
-writeIntoFile(fileName, projectOne, testerOne)
-writeIntoFile(fileName, projectTwo, testerTwo)
+txtFile = 'projekti.txt'
+writeIntoFile(txtFile, projectOne, testerOne)
+writeIntoFile(txtFile, projectTwo, testerTwo)
 
 
 # Write from file
-writeFromFile(fileName)
+writeFromFile(txtFile)
