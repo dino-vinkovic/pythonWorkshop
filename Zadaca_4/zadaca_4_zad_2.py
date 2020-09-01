@@ -55,15 +55,17 @@ guessedSoFar = ''
 
 while movesCount > 0:
 
-    # Get user input a letter or solution and check what he typed in
+    # Get user input a letter or solution and check what they typed in
     guess = getGuess(guessedSoFar, randomPlayWord)
 
+    # Check whether the guessed letter is in the secret word
     if guess in randomPlayWord:
         print('\nYou guessed the letter: ', guess)
         guessedSoFar += guess
         guessedSoFar = checkLetter(randomPlayWord, guessedSoFar)
         print(guessedSoFar)
 
+        # Check if solution was offered or if all the letters were guessed and form the complete word
         if guess == randomPlayWord or guessedSoFar == randomPlayWord:
             print('Congratulations! You guessed it!')
             break
