@@ -1,6 +1,3 @@
-import os
-
-
 class Tester:
     def __init__(self, name, surname):
         self.name = name
@@ -14,86 +11,80 @@ class Projekt:
 
 
 # Function to repeatedly prompt user for tester name and check the input is a letter
-def inputTesterDetails():
-    testerName = input("Type in the tester's name: ")
-    testerSurname = input("Type in the tester's surname: ")
+def input_tester_details():
+    tester_name = ''
+    tester_surname = ''
 
-    while not testerName.isalpha() or testerName.isspace()\
-            or not testerSurname.isalpha() or testerSurname.isspace():
-        testerName = input("Type in the tester's name: ")
-        testerSurname = input("Type in the tester's surname: ")
+    while not tester_name.isalpha() or not tester_surname.isalpha():
+        tester_name = input("Type in the tester's name: ")
+        tester_surname = input("Type in the tester's surname: ")
 
-    return [testerName, testerSurname]
+    return tester_name, tester_surname
 
 
 # Function to repeatedly prompt user for project name and check the input is a letter
-def inputProjectDetails():
-    projectName = input("Type in the project's name: ")
+def input_project_details():
+    project_name = ''
 
-    while not projectName.isalpha() or projectName.isspace():
-        projectName = input("Type in the project's name: ")
+    while not project_name.isalpha():
+        project_name = input("Type in the project's name: ")
 
-    return projectName
+    return project_name
 
 
 # Function that writes project and tester details into a file
-def writeIntoFile(fileName, projectName, tester):
+def write_into_file(file_name, project_name, tester):
 
     # Append if file already exists, create a new one otherwise
-    if os.path.exists(fileName):
-        appendWrite = 'a'
-    else:
-        appendWrite = 'w'
+    projects_file = open(file_name, 'a')
 
-    projectsFile = open(fileName, appendWrite)
+    projects_file.write('Project name: ' + project_name.name + '\n')
+    projects_file.write('Main tester: ' + tester.name + ' ' + tester.surname + '\n')
 
-    projectsFile.write('Project name: ' + projectName.name + '\n')
-    projectsFile.write('Main tester: ' + tester.name + ' ' + tester.surname + '\n')
-
-    projectsFile.close()
+    projects_file.close()
 
 
 # Function that writes from a file
-def writeFromFile(fileName):
+def write_from_file(file_name):
 
-    projectFile = ''
+    project_file = ''
 
     try:
-        projectFile = open(fileName)
+        project_file = open(file_name)
 
-        for line in projectFile:
+        for line in project_file:
             print(line)
     except IOError:
         print('File not found.')
     finally:
-        projectFile.close()
+        project_file.close()
 
 
 # Ask user to input 2 testers
-testerOneInput = inputTesterDetails()
-testerTwoInput = inputTesterDetails()
+tester_one_input = input_tester_details()
+tester_two_input = input_tester_details()
 
 
 # Create two tester objects
-testerOne = Tester(testerOneInput[0], testerOneInput[1])
-testerTwo = Tester(testerTwoInput[0], testerTwoInput[1])
+tester_one = Tester(tester_one_input[0], tester_one_input[1])
+tester_two = Tester(tester_two_input[0], tester_two_input[1])
 
 
 # Ask user to input 2 projects
-projectOneInput = inputProjectDetails()
-projectTwoInput = inputProjectDetails()
+project_one_input = input_project_details()
+project_two_input = input_project_details()
 
 
 # Create two project objects
-projectOne = Projekt(projectOneInput, testerOne)
-projectTwo = Projekt(projectTwoInput, testerTwo)
+project_one = Projekt(project_one_input, tester_one)
+project_two = Projekt(project_two_input, tester_two)
 
 
 # Write into file
-txtFile = 'projekti.txt'
-writeIntoFile(txtFile, projectOne, testerOne)
-writeIntoFile(txtFile, projectTwo, testerTwo)
+txt_file = 'projekti.txt'
+write_into_file(txt_file, project_one, tester_one)
+write_into_file(txt_file, project_two, tester_two)
 
 
 # Write from file
-writeFromFile(txtFile)
+write_from_file(txt_file)
