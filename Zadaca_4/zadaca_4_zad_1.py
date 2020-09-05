@@ -3,7 +3,7 @@ import random
 
 # Prompt user for name. Check the input consists of letters
 def input_name(name):
-    while not name.isalpha() or name.isspace():
+    while not name.isalpha():
         print("Please use letters only. Names like 'X Æ A-12' are a bit weird.")
         name = input("Type in the player's name again: ")
 
@@ -71,7 +71,7 @@ def check_game_status():
     return status
 
 
-# Check whether the field has already been used
+# Check whether the field has already been filled in
 def check_field_validity(field):
     if board[field] == ' ':
         return True
@@ -91,6 +91,7 @@ print("""* * * Tic Tac Toe * * *
     [7] | [8] | [9]
         |     |
 """)
+
 
 # Prompt user for two names
 player_one = input_name(input("Player One, what's your name: "))
