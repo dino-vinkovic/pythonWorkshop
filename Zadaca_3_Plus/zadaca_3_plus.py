@@ -2,8 +2,10 @@ import random
 
 print('*** Legend of Ino ***')
 
+
 def printCharacterDetails(name, healthPoints, magicPoints):
     print('Name:', name, 'HP:', healthPoints, 'MP:', magicPoints, '\n')
+
 
 # Calculate hit points for character according to his details
 def calculatePoints(character):
@@ -11,6 +13,7 @@ def calculatePoints(character):
     randomMP = random.randrange(0, int((character.magicPoints / 2)) + 1)
     hitPoints = (randomHP + randomMP) * 2
     return hitPoints
+
 
 # Ask player if he wants a health potion
 def doctorCheckUp(player):
@@ -22,6 +25,7 @@ def doctorCheckUp(player):
         print('You got additional HP.', additionalHp)
     else:
         pass
+
 
 # Send details for two characters and calculate who wins
 def fight(player, enemy):
@@ -38,13 +42,13 @@ def fight(player, enemy):
         if playerHitPoints > enemyHitPoints:
             enemy.healthPoints -= playerHitPoints
             print(player.name + ' hit ' + enemy.name + ' with ' + str(playerHitPoints) + '. ' +
-            enemy.name + ' hit ' + player.name + ' with ' + str(enemyHitPoints) + '. ' +
-            player.name + ' wins the round.')
+                  enemy.name + ' hit ' + player.name + ' with ' + str(enemyHitPoints) + '. ' +
+                  player.name + ' wins the round.')
         else:
             player.healthPoints -= enemyHitPoints
             print(enemy.name + ' hit ' + player.name + ' with ' + str(enemyHitPoints) + '. ' +
-            player.name + ' hit ' + enemy.name + ' with ' + str(playerHitPoints) + '. ' +
-            enemy.name + ' wins the round.')
+                  player.name + ' hit ' + enemy.name + ' with ' + str(playerHitPoints) + '. ' +
+                  enemy.name + ' wins the round.')
 
         printCharacterDetails(player.name, player.healthPoints, player.magicPoints)
         printCharacterDetails(enemy.name, enemy.healthPoints, enemy.magicPoints)
@@ -62,6 +66,7 @@ def fight(player, enemy):
         else:
             print('You lose.', enemy.name, 'wins the fight!\n')
 
+
 class Character:
     def __init__(self, name, healthPoints=None, magicPoints=None):
         self.name = name
@@ -74,6 +79,7 @@ class Character:
 
     def addWeapon(self, weapon):
         self.weapon = weapon
+
 
 # Prompt user for character's name and check if they typed in a non-letter or space
 selectCharacterName = input("What is your character's name: ")
@@ -142,7 +148,7 @@ elif selectWeapon == '3':
     playersCharacter.magicPoints += random.randrange(0, 101)
     print('You have selected the following weapon:', weapons[2])
 
-#Print the details of the created character
+# Print the details of the created character
 printCharacterDetails(playersCharacter.name, playersCharacter.healthPoints, playersCharacter.magicPoints)
 
 # Create enemies
